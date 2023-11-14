@@ -43,23 +43,6 @@ jobs:
           SCRIPT_AFTER: |
             sudo docker pull tariqventura/workflow:develop && sudo docker rm -f develop && sudo docker run -d --name develop -p 80:80 tariqventura/workflow:develop
       
-      - name: Build Docker Image master
-        if: github.ref == 'refs/heads/master'
-        run: |
-         sudo docker build -t workflow:master .
-        env:
-         DOCKER_BUILDKIT: 1
-
-      - name: Push Docker Image master
-        if: github.ref == 'refs/heads/master'
-        run: |
-         sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
-         sudo docker tag workflow:master ${{ secrets.DOCKER_USERNAME }}/workflow:master
-         sudo docker push ${{ secrets.DOCKER_USERNAME }}/workflow:master
-        env:
-         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Deploy to VM master
         if: github.ref == 'refs/heads/master'
         uses: easingthemes/ssh-deploy@v4.0.5
