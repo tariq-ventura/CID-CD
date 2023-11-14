@@ -16,7 +16,7 @@ jobs:
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v4.0.5
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          sshPrivateKey: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: 34.172.183.34 
           REMOTE_USER: tventura
           SOURCE: .
