@@ -20,4 +20,4 @@ jobs:
           REMOTE_HOST: 34.172.183.34 
           REMOTE_USER: tventura
           SCRIPT_AFTER: |
-            mkdir prueba
+            sudo mkdir prueba
