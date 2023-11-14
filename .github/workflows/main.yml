@@ -39,7 +39,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.VM_HOST }} 
           REMOTE_USER: ${{ secrets.VM_USER }} 
           SOURCE: .
-          TARGET: /home/tventura/
+          TARGET: /home/${{ secrets.VM_USER }} /
           SCRIPT_AFTER: |
             sudo docker pull tariqventura/workflow:develop && sudo docker rm -f develop && sudo docker run -d --name develop -p 80:80 tariqventura/workflow:develop
       
@@ -65,9 +65,9 @@ jobs:
         uses: easingthemes/ssh-deploy@v4.0.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_MASTER }}
-          REMOTE_HOST: 35.208.190.154 
-          REMOTE_USER: tventura
+          REMOTE_HOST: ${{ secrets.VM_HOST_MASTER }}
+          REMOTE_USER: ${{ secrets.VM_USER }} 
           SOURCE: .
-          TARGET: /home/tventura/
+          TARGET: /home/${{ secrets.VM_USER }} /
           SCRIPT_AFTER: |
             sudo docker pull tariqventura/workflow:master && sudo docker rm -f master && sudo docker run -d --name master -p 80:80 tariqventura/workflow:master
