@@ -22,5 +22,5 @@ jobs:
           SOURCE: .
           TARGET: /home/tventura/
           SCRIPT_AFTER: |
-            sudo docker pull tariqventura/workflow:develop && docker rm -f develop && sudo docker run -d --name develop -p 80:80 tariqventura/workflow:develop
+            sudo docker pull tariqventura/workflow:develop && sudo docker rm -f develop && sudo docker run -d --name develop -p 80:80 tariqventura/workflow:develop
 
