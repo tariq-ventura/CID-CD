@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: deploy to server
 
 on:
   push:
@@ -15,9 +15,9 @@ jobs:
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v4.0.5
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-user: tventura
-          server-ip: 34.172.183.34 
-          repo: .
-          path: /home/tventura
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: 34.172.183.34 
+          REMOTE_USER: tventura
+          SOURCE: .
+          TARGET: /home/tventura
