@@ -19,4 +19,5 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: 34.172.183.34 
           REMOTE_USER: tventura
-          ARGS: mkdir prueba
+          SCRIPT_AFTER: |
+            mkdir prueba
