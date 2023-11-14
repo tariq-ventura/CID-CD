@@ -1,0 +1,25 @@
+name: SSH Connect
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  connect-to-vm:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Generate SSH key
+      run: |
+        ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -N ""
+
+    - name: Print Public Key
+      run: cat $HOME/.ssh/id_rsa.pub
+
+    - name: Connect to VM and Run Commands
+      run: |
+        ssh -i $HOME/.ssh/id_rsa tventura@34.172.183.34  "comandos_a_ejecutar"
