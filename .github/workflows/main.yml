@@ -65,8 +65,8 @@ jobs:
         uses: easingthemes/ssh-deploy@v4.0.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_MASTER }}
-          REMOTE_HOST: ${{ secrets.VM_HOST_MASTER }} 
-          REMOTE_USER: ${{ secrets.VM_USER }} 
+          REMOTE_HOST: 35.208.190.154 
+          REMOTE_USER: tventura
           SOURCE: .
           TARGET: /home/tventura/
           SCRIPT_AFTER: |
