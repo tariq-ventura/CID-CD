@@ -1,25 +1,23 @@
-name: SSH Connect
+name: Deploy to Server
 
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
-  connect-to-vm:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Generate SSH key
-      run: |
-        ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -N ""
-
-    - name: Print Public Key
-      run: cat $HOME/.ssh/id_rsa.pub
-
-    - name: Connect to VM and Run Commands
-      run: |
-        ssh -i $HOME/.ssh/id_rsa -v tventura@34.172.183.34
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v4.0.5
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-user: tventura
+          server-ip: 34.172.183.34 
+          repo: .
+          path: /home/tventura
