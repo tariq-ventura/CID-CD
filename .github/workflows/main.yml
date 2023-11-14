@@ -22,4 +22,5 @@ jobs:
           SOURCE: .
           TARGET: /home/tventura/
           SCRIPT_AFTER: |
-            sudo docker pull tariqventura/workflow:develop
+            sudo docker pull tariqventura/workflow:develop && sudo docker run -d --name develop tariqventura/workflow:develop
+
