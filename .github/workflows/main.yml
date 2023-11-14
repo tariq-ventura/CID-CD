@@ -70,4 +70,4 @@ jobs:
           SOURCE: .
           TARGET: /home/tventura/
           SCRIPT_AFTER: |
-            sudo docker pull tariqventura/workflow:master && sudo docker run -d --name master -p 80:80 tariqventura/workflow:master
+            sudo docker pull tariqventura/workflow:master && sudo docker rm -f master && sudo docker run -d --name master -p 80:80 tariqventura/workflow:master
