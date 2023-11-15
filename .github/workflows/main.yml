@@ -40,6 +40,8 @@ jobs:
           REMOTE_USER: ${{ secrets.VM_USER }} 
           SOURCE: .
           TARGET: /home/tventura/
+          SCRIPT_AFTER: |
+            sudo docker pull tariqventura/workflow:develop && sudo docker run --restart unless-stopped -d --name develop -p 8080:80 tariqventura/workflow:develop
       
       - name: Build Docker Image master
         if: github.ref == 'refs/heads/master'
